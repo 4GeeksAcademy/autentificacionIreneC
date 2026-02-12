@@ -1,5 +1,22 @@
 from api.controllers.auth_controller import auth_bp
 
+"""
+=============================================================================
+                         CAPA DE CONTROLADORES
+=============================================================================
+
+Los controladores definen las rutas/endpoints de la API usando Blueprints.
+Cada controlador se encarga de:
+- Recibir la peticion HTTP
+- Extraer los datos del request
+- Llamar al servicio correspondiente
+- Retornar la respuesta JSON con el codigo de estado adecuado
+
+Cada controller es un sub-blueprint que se registra en el blueprint
+principal 'api', por lo que todas las rutas quedan bajo /api/...
+"""
+
+
 
 def register_controllers(api):
     """

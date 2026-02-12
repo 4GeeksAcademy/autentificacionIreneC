@@ -1,5 +1,8 @@
 export const initialStore=()=>{
   return{
+    
+    token: sessionStorage.getItem("token") || null, // Recupera el token si existe al cargar la app
+    user: null,
     message: null,
     todos: [
       {
@@ -18,6 +21,34 @@ export const initialStore=()=>{
 
 export default function storeReducer(store, action = {}) {
   switch(action.type){
+
+
+    case 'login':
+      // Guardamos el token en sessionStorage para que no se pierda al refrescar
+      sessionStorage.setItem("token", action.payload.token);
+      return {
+        ...store,
+        token: action.payload.token,
+        user: action.payload.user
+      };
+
+    case 'logout':
+      // 1. Eliminamos el token del sessionStorage (como pide el ejercicio)
+      sessionStorage.removeItem("token");
+      // 2. Limpiamos el estado global
+      return {
+        ...store,
+        token: null,
+        user: null
+      };
+
+    case 'set_user':
+      return {
+        ...store,
+        user: action.payload
+      };
+
+  // --- ESTOS CASOS YA ESTABAN EN EL EJERCICIO!! ---
     case 'set_hello':
       return {
         ...store,
