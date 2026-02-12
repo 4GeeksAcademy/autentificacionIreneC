@@ -5,11 +5,15 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User
 from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
+from api.controllers import register_controllers
+
 
 api = Blueprint('api', __name__)
 
 # Allow CORS requests to this API
 CORS(api)
+
+register_controllers(api)
 
 
 @api.route('/hello', methods=['POST', 'GET'])
