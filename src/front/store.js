@@ -24,7 +24,7 @@ export default function storeReducer(store, action = {}) {
 
 
     case 'login':
-      // Guardamos el token en sessionStorage para que no se pierda al refrescar
+      // Guardamos el token en sessionStorage 
       sessionStorage.setItem("token", action.payload.token);
       return {
         ...store,
@@ -33,7 +33,7 @@ export default function storeReducer(store, action = {}) {
       };
 
     case 'logout':
-      // 1. Eliminamos el token del sessionStorage (como pide el ejercicio)
+      // 1. Eliminamos el token del sessionStorage
       sessionStorage.removeItem("token");
       // 2. Limpiamos el estado global
       return {
